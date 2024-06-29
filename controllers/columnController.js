@@ -11,7 +11,6 @@ export const addColumn = async (req, res, next) => {
 
   try {
     const column = await Column.findOne({ title });
-    console.log('One column:', column);
 
     if (column && column.boardId === boardId) {
       throw HttpError(400, 'This title is already used');
@@ -22,8 +21,6 @@ export const addColumn = async (req, res, next) => {
       boardId,
       owner: _id,
     };
-
-    console.log('new column:', taskColumn);
 
     const newColumn = await Column.create(taskColumn);
 
